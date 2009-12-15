@@ -24,3 +24,5 @@ do
 done
 cat tmp.log | perl parse.pl
 
+rm tmp.log >/dev/null 2>/dev/null
+
