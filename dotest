@@ -1,0 +1,59 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+while (<>) {
+    if (/^\s*$/) { next; }
+    chomp;
+
+    my $xml = $_;
+    my $xsls = [];
+    while (<>) {
+        if (!/^\s{4}/) { last; }
+        chomp;
+
+        my $xsl = $_;
+        $xsl =~ s/^\s+//;
+        if ($xsl eq '*') {
+            push(@$xsls, <*.xsl>);
+        } else {
+            push(@$xsls, $xsl);
+        }
+    }
+
+    do_test($xml, $xsls);
+
+}
+
+sub do_test {
+    my ($xml, $xsls) = @_;
+
+    for my $xsl (@$xsls) {
+
+        print "$xml + $xsl:\n";
+
+        my @results = ();
+        for (my $i = 0; $i < 100; $i++) {
+            my $out = `xsltproc --profile --repeat --timing -o /dev/null $xsl $xml 2>&1`;
+
+            if ($out =~ m{Running stylesheet and saving result took (\d+) ms}sm) {
+                push(@results, $1);
+            }
+        }
+        @results = sort { $a <=> $b } @results;
+
+        my $total = 0;
+        my $count = 0;
+        for (my $i = 25; $i < 75; $i++) {
+            $total += $results[$i];
+            $count++;
+        }
+
+        if ($count > 0) {
+            printf("    %.2f\n", $total / $count);
+        }
+
+    }
+}
+
