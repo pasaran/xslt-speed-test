@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $out;
+{
+    local $/;
+    $out = <>;
+}
+
+my @results = ();
+while ($out =~ m{Running stylesheet and saving result took (\d+) ms}gsm) {
+    push(@results, $1);
+}
+my @sorted = sort { $a <=> $b } @results;
+
+my $total = 0;
+my $count = 0;
+for (my $i = 25; $i < 75; $i++) {
+    $total += $sorted[$i];
+    $count++;
+}
+
+if ($count > 0) {
+    printf("Count: %d, Avg: %.2f\n", $count, $total / $count);
+}
+
