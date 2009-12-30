@@ -1,0 +1,138 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use File::Path;
+
+# xml'и складываем в папку xml.
+
+mkpath('xml');
+
+# Генерим xml-файлы для тестов вида:
+#
+# <items>
+#     <item>1</item>
+#     <item>2</item>
+#     ...
+
+# Существует три модификатора:
+
+# 1. Количество item'ов
+my @counts = ( 10000, 25000, 50000 );
+
+# 2. Структура. Бывает несколько подвидов:
+#   а) Просто список item'ов:
+#
+#       <item>1</item>
+#       <item>2</item>
+#       ...
+#       <item>N</item>
+#
+#   б) Чередование item'ов и noitem'ов:
+#
+#       <item>1</item>
+#       <noitem>1</noitem>
+#       <item>2</item>
+#       <noitem>2</noitem>
+#       ...
+#       <item>N</item>
+#       <noitem>N</noitem>
+#
+#   в) Сперва список item'ов, затем список noitem'ов:
+#
+#       <item>1</item>
+#       <item>2</item>
+#       ...
+#       <item>N</item>
+#       <noitem>1</noitem>
+#       <noitem>2</noitem>
+#       ...
+#       <noitem>N</noitem>
+
+my %subs = (
+    "items-" => \&items,
+    "item_noitem_s-" => \&item_noitem_s,
+    "items_noitems-" => \&items_noitems
+);
+
+# 3. С отступами или без (в одну строчку):
+my %indents = (
+    "" => 1,
+    "-noindents" => 0
+);
+
+# Перебираем все варианты и генерим соответствующие файлы:
+my $F;
+while (my ($prefix, $sub) = each %subs) {
+
+    for my $count (@counts) {
+
+        while (my ($suffix, $indents) = each %indents) {
+            open($F, ">xml/$prefix$count$suffix.xml");
+            print $F <<XML;
+<?xml version="1.0" encoding="utf-8"?>
+
+XML
+            print $F ($indents) ? "<items>\n" : "<items>";
+            print $F (&$sub($count, $indents));
+            print $F ($indents) ? "</items>\n" : "</items>";
+            close($F);
+        }
+    }
+}
+
+#######################################################################################################################
+
+# Сгенерить список item'ов.
+sub items {
+    my ($count, $indents) = @_;
+
+    return _tags("item", $count, $indents);
+}
+
+# Сгенерить чередующийся список из item/noitem'ов.
+sub item_noitem_s {
+    my ($count, $indents) = @_;
+
+    return _tags([ "item", "noitem" ], $count, $indents);
+}
+
+# Сгенерить список item'ов, затем список noitem'ов.
+sub items_noitems {
+    my ($count, $indents) = @_;
+
+    return _tags("item", $count, $indents) . _tags("noitem", $count, $indents);
+}
+
+#######################################################################################################################
+
+sub _tags {
+    my ($tag, $count, $indents) = @_;
+
+    return join('', map( _tag($tag, $_, $indents), 1..$count));
+}
+
+sub _tag {
+    my ($tags, $i, $indents) = @_;
+
+    # В $tags просто строка с именем тега.
+    if (!(ref $tags)) { return _onetag($tags, $i, $indents); }
+
+    # В $tags ссылка на массив с именами тегов.
+
+    my $r = '';
+    for my $tag (@$tags) {
+        $r .= _onetag($tag, $i, $indents);
+    }
+    return $r;
+}
+
+sub _onetag {
+    my ($tag, $i, $indents) = @_;
+
+    return ($indents) ? "    <$tag>$i</$tag>\n" : "<$tag>$i</$tag>";
+}
+
+#######################################################################################################################
+
