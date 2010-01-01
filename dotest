@@ -79,9 +79,9 @@ sub parse_test {
 sub do_test {
     my ($xml, $xsls) = @_;
 
-    print "-" x85, "\n";
-    printf("%40s%15s%15s%15s\n", rel_path($xml, $cwd), "run", "parse xsl", "parse xml");
-    print "-" x85, "\n";
+    print "-" x95, "\n";
+    printf("%50s%15s%15s%15s\n", rel_path($xml, $cwd), "run", "parse xsl", "parse xml");
+    print "-" x95, "\n";
 
     for my $xsl (@$xsls) {
 
@@ -104,7 +104,7 @@ sub do_test {
             $result->{$key} = average($results, $key);
         }
 
-        printf("%40s%15s%15s%15s\n", rel_path($xsl, $cwd), $result->{'run'}, $result->{'parse-xsl'}, $result->{'parse-xml'});
+        printf("%50s%15s%15s%15s\n", rel_path($xsl, $cwd), $result->{'run'}, $result->{'parse-xsl'}, $result->{'parse-xml'});
 
     }
 
