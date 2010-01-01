@@ -18,7 +18,12 @@ my %re_tests = (
 
 #######################################################################################################################
 
-my $input = shift || ".";
+my $input = shift;
+if (!$input && -e "make.test") {
+    $input = "make.test";
+} elsif (!$input) {
+    $input = ".";
+}
 
 if ($input =~ /\.test$/ && -e $input) {
 

@@ -1,0 +1,6 @@
+../xml/items-10000-noindents.xml
+    choose.xsl
+    apply-templates.xsl
+    choose-noout.xsl
+    apply-templates-noout.xsl
+
