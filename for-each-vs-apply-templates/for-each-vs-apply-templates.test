@@ -1,7 +1,15 @@
-../xml/items-50000-noindents.xml
-    *
-
 ../xml/items-50000.xml
+    for-each.xsl
+    apply-templates.xsl
+    apply-templates-select.xsl
+    for-each-noout.xsl
+    apply-templates-noout.xsl
+    apply-templates-select-noout.xsl
+
+../xml/items-50000-noindents.xml
+    for-each.xsl
+    apply-templates.xsl
+    apply-templates-select.xsl
     for-each-noout.xsl
     apply-templates-noout.xsl
     apply-templates-select-noout.xsl

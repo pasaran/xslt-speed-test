@@ -3,57 +3,202 @@
 use strict;
 use warnings;
 
-while (<>) {
-    if (/^\s*$/) { next; }
-    chomp;
+use Cwd qw|getcwd abs_path|;
+use File::Basename;
 
-    my $xml = $_;
-    my $xsls = [];
-    while (<>) {
-        if (!/^\s{4}/) { last; }
-        chomp;
+my $cwd = abs_path(getcwd()) . "/.test"; # Какбэ файл в текущей папке.
 
-        my $xsl = $_;
-        $xsl =~ s/^\s+//;
-        if ($xsl eq '*') {
-            push(@$xsls, <*.xsl>);
-        } else {
-            push(@$xsls, $xsl);
-        }
+#######################################################################################################################
+
+my %re_tests = (
+    "run"       => qr/Running stylesheet and saving result took (\d+) ms/sm,
+    "parse-xsl" => qr/Parsing stylesheet .*? took (\d+) ms/sm,
+    "parse-xml" => qr/Parsing document .*? took (\d+) ms/sm
+);
+
+#######################################################################################################################
+
+my $input = shift || ".";
+
+if ($input =~ /\.test$/ && -e $input) {
+
+    parse_test($input);
+
+} elsif (-d $input) {
+
+    my $xmls = get_files($input, "xml");
+    my $xsls = get_files($input, "xsl");
+
+    for my $xml (@$xmls) {
+        do_test($xml, $xsls);
     }
 
-    do_test($xml, $xsls);
-
 }
+
+#######################################################################################################################
+
+sub parse_test {
+    my ($fullpath) = @_;
+
+    my ($name, $path) = fileparse($fullpath);
+
+    my $F;
+    open($F, $fullpath);
+    while (<$F>) {
+        if (/^\s*$/) { next; }
+        chomp;
+
+        my $xml = abs_path("$path/$_");
+
+        my $xsls = [];
+        while (<$F>) {
+            if (!/^\s{4}/) { last; }
+            chomp;
+
+            my $xsl = $_;
+            $xsl =~ s/^\s+//;
+            if ($xsl eq '*') {
+                push(@$xsls, @{get_files($path, "xsl")});
+            } else {
+                push(@$xsls, abs_path("$path/$xsl"));
+            }
+        }
+
+        do_test($xml, $xsls);
+    }
+    close($F);
+}
+
+#######################################################################################################################
 
 sub do_test {
     my ($xml, $xsls) = @_;
 
+    print "-" x85, "\n";
+    printf("%40s%15s%15s%15s\n", rel_path($xml, $cwd), "run", "parse xsl", "parse xml");
+    print "-" x85, "\n";
+
     for my $xsl (@$xsls) {
 
-        print "$xml + $xsl:\n";
-
-        my @results = ();
+        my $results = [];
         for (my $i = 0; $i < 100; $i++) {
             my $out = `xsltproc --profile --repeat --timing -o /dev/null $xsl $xml 2>&1`;
 
-            if ($out =~ m{Running stylesheet and saving result took (\d+) ms}sm) {
-                push(@results, $1);
+            my $result = {};
+            while (my ($key, $re) = each %re_tests) {
+                if ($out =~ /$re/) {
+                    $result->{$key} = $1;
+                }
             }
-        }
-        @results = sort { $a <=> $b } @results;
+            push(@$results, $result);
 
-        my $total = 0;
-        my $count = 0;
-        for (my $i = 25; $i < 75; $i++) {
-            $total += $results[$i];
-            $count++;
         }
 
-        if ($count > 0) {
-            printf("    %.2f\n", $total / $count);
+        my $result = {};
+        for my $key (keys %re_tests) {
+            $result->{$key} = average($results, $key);
         }
+
+        printf("%40s%15s%15s%15s\n", rel_path($xsl, $cwd), $result->{'run'}, $result->{'parse-xsl'}, $result->{'parse-xml'});
 
     }
+
+    print "\n";
+}
+
+sub average {
+    my ($results, $key) = @_;
+
+    # Строим сортированный массив значений заданного ключа.
+    my @list = sort { $a <=> $b } map { $_->{$key} } @$results;
+
+    my $total = 0;
+    my $count = 0;
+    for (my $i = 25; $i < 75; $i++) { # Обрасываем 25 верхних и 25 нижних значений, среди остальных вычисляем среднее.
+        $total += $list[$i];
+        $count++;
+    }
+
+    if ($count > 0) {
+        return sprintf("%.2f", $total / $count);
+    }
+
+}
+
+#######################################################################################################################
+
+# Возвращаем все файлы с заданным расширением в данной папке.
+sub get_files {
+    my ($dir, $ext) = @_;
+
+    my $re = qr/\.$ext/;
+
+    my $files = [];
+    my $DIR;
+    opendir($DIR, $dir);
+    while (my $file = readdir($DIR)) {
+        if ($file !~ /$re/) { next; }
+        push(@$files, abs_path("$dir/$file"));
+    }
+    closedir($DIR);
+
+    return $files;
+}
+
+#######################################################################################################################
+
+# Возращает путь к файлу, относительный другого файла.
+# Примеры:
+#   rel_path('a/b/c.txt', 'a/d.txt') eq 'b/c.txt'
+#   rel_path('a/d.txt', 'a/b/c.txt') eq '../d.txt'
+sub rel_path {
+    my ($name, $rel_to) = @_;
+
+    $name = abs_path($name);
+    $rel_to = abs_path($rel_to);
+
+    my $common = starts_with($name, $rel_to);
+
+    $name =~ s{^$common}{};
+    $rel_to =~ s{^$common}{};
+
+    if ($rel_to =~ m{/}) {
+        $rel_to =~ s{/[^/]*$}{};
+        $rel_to =~ s{[^/]+}{..}g;
+
+        $name = "$rel_to/$name";
+    }
+
+    return $name;
+}
+
+# Возвращает общую часть пути двух имен файлов.
+# Пример:
+#   starts_with('/some/very/long/path/file.txt', '/some/very/short/path/file.txt') eq '/some/very/'
+sub starts_with {
+    my ($a, $b) = @_;
+
+    my $r = '';
+    my @a = split('/', $a);
+    my @b = split('/', $b);
+
+    my $i = 1; # Пропускаем 0, там пустая строка.
+    my @path = ();
+    while ($a[$i] eq $b[$i]) {
+        push(@path, $a[$i]);
+        $i++;
+    }
+    return "/" . join("/", @path) . "/";
+}
+
+#######################################################################################################################
+
+sub usage {
+    print <<USAGE;
+    Usage:
+        dotest dir/
+        dotest path/to.test
+        dotest
+USAGE
 }
 

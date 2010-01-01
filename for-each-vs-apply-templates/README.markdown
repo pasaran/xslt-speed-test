@@ -1,26 +1,30 @@
 Результаты теста
 ================
 
-test-50000.xml
---------------
+    $> ../dotest for-each-vs-apply-templates.test
 
-    for-each.xsl                        133.34
-    apply-templates-select.xsl          291.10
-    apply-templates.xsl                 319.68
+    -------------------------------------------------------------------------------------
+                      ../xml/items-50000.xml            run      parse xsl      parse xml
+    -------------------------------------------------------------------------------------
+                                for-each.xsl         133.10           0.00          53.82
+                         apply-templates.xsl         318.42           0.00          54.10
+                  apply-templates-select.xsl         289.96           0.00          53.90
+                          for-each-noout.xsl          12.86           0.00          54.02
+                   apply-templates-noout.xsl          29.00           0.00          53.80
+            apply-templates-select-noout.xsl          18.96           0.00          54.02
 
-    for-each-noout.xsl                  12.70
-    apply-templates-select-noout.xsl    19.00
-    apply-templates-noout.xsl           28.24
+    -------------------------------------------------------------------------------------
+            ../xml/items-50000-noindents.xml            run      parse xsl      parse xml
+    -------------------------------------------------------------------------------------
+                                for-each.xsl         130.94           0.00          37.50
+                         apply-templates.xsl         285.70           0.00          37.52
+                  apply-templates-select.xsl         287.42           0.00          37.60
+                          for-each-noout.xsl          10.00           0.00          37.18
+                   apply-templates-noout.xsl          14.08           0.00          37.10
+            apply-templates-select-noout.xsl          16.00           0.00          37.22
 
+Выводы
+------
 
-test-50000-nospaces.xml
------------------------
-
-    for-each.xsl                        130.80
-    apply-templates.xsl                 285.64
-    apply-templates-select.xsl          287.14
-
-    for-each-noout.xsl                  10.00
-    apply-templates-noout.xsl           14.00
-    apply-templates-select-noout.xsl    16.00
+`for-each` однозначно быстрее, чем `apply-templates`.
 
