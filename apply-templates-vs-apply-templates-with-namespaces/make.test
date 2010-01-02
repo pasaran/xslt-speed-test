@@ -1,0 +1,6 @@
+../xml/items-50000-noindents.xml
+    apply-templates.xsl
+
+../xml/ns-items-50000-noindents.xml
+    ns-apply-templates.xsl
+
