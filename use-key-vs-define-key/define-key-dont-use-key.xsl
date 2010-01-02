@@ -5,9 +5,9 @@
 
 <xsl:output method="xml"/>
 
-<xsl:key name="key" match="item" use="."/>
+<xsl:key name="key" match="item" use="@id"/>
 
-<xsl:template match="/">
+<xsl:template match="test">
     <out/>
 </xsl:template>
 

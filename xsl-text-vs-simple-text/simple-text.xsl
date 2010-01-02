@@ -13,7 +13,7 @@
 <xsl:output method="xml"/>
 
 <xsl:template match="test">
-    <result>
+    <results>
         &simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;
         &simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;
         &simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;
@@ -114,7 +114,7 @@
         &simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;
         &simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;
         &simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;&simple-text-x100;
-    </result>
+    </results>
 </xsl:template>
 
 </xsl:stylesheet>

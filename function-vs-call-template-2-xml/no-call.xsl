@@ -7,20 +7,14 @@
     extension-element-prefixes=" func "
     >
 
+<xsl:include href="../common.xsl"/>
+
 <xsl:output method="xml"/>
 
-<xsl:template match="/">
-    <out>
-        <xsl:apply-templates select="items"/>
-    </out>
-</xsl:template>
-
-<xsl:template match="items">
-    <xsl:apply-templates select="item"/>
-</xsl:template>
-
 <xsl:template match="item">
-    <div><xsl:value-of select="."/></div>
+    <li>
+        <xsl:value-of select="text"/>
+    </li>
 </xsl:template>
 
 </xsl:stylesheet>

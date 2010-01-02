@@ -5,10 +5,10 @@
 
 <xsl:output method="xml"/>
 
-<xsl:template match="/">
-    <out>
+<xsl:template match="test">
+    <results>
         <xsl:apply-templates select="items"/>
-    </out>
+    </results>
 </xsl:template>
 
 <xsl:template match="items">

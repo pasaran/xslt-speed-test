@@ -5,7 +5,7 @@
 
 <xsl:output method="xml"/>
 
-<xsl:template match="/">
+<xsl:template match="test">
     <out/>
 </xsl:template>
 

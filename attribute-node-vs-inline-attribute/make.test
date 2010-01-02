@@ -1,3 +1,6 @@
-../xml/items-50000-noindents.xml
-    *
+../xml/50000_.xml
+    const-attribute.xsl
+    inline-attribute.xsl
+    const-attribute-and-value-of.xsl
+    attribute-node.xsl
 

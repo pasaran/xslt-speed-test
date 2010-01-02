@@ -9,129 +9,99 @@ use File::Path;
 
 mkpath('xml');
 
-# Генерим xml-файлы для тестов вида:
-#
-# <items>
-#     <item>1</item>
-#     <item>2</item>
-#     ...
+my $N_LABELS = 7;
 
-# Существует три модификатора:
+#######################################################################################################################
 
-# 1. Количество item'ов
-my @counts = ( 5, 10000, 25000, 50000 );
+write_test("5", 5, \&type0);
+write_test("5_", 5, \&type1);
+write_test("5ns", 5, \&type2);
 
-# 2. Структура. Бывает несколько подвидов:
-#   а) Просто список item'ов:
-#
-#       <item>1</item>
-#       <item>2</item>
-#       ...
-#       <item>N</item>
-#
-#   б) Чередование item'ов и noitem'ов:
-#
-#       <item>1</item>
-#       <noitem>1</noitem>
-#       <item>2</item>
-#       <noitem>2</noitem>
-#       ...
-#       <item>N</item>
-#       <noitem>N</noitem>
-#
-#   в) Сперва список item'ов, затем список noitem'ов:
-#
-#       <item>1</item>
-#       <item>2</item>
-#       ...
-#       <item>N</item>
-#       <noitem>1</noitem>
-#       <noitem>2</noitem>
-#       ...
-#       <noitem>N</noitem>
+write_test("10000", 10000, \&type0);
+write_test("10000_", 10000, \&type1);
+write_test("10000ns", 10000, \&type2);
 
-my %subs = (
-    "items-" => \&items,
-    "item_noitem_s-" => \&item_noitem_s,
-    "items_noitems-" => \&items_noitems
-);
+write_test("50000", 50000, \&type0);
+write_test("50000_", 50000, \&type1);
+write_test("50000ns", 50000, \&type2);
 
-# 3. С отступами или без (в одну строчку):
-my %indents = (
-    "" => 1,
-    "-noindents" => 0
-);
+#######################################################################################################################
 
-# Перебираем все варианты и генерим соответствующие файлы:
-my $F;
-while (my ($prefix, $sub) = each %subs) {
+sub write_test {
+    my ($filename, $count, $type) = @_;
 
-    for my $count (@counts) {
+    my $F;
+    open($F, ">xml/$filename.xml");
+    print $F (&$type($count));
+    close($F);
+}
 
-        while (my ($suffix, $indents) = each %indents) {
-            open($F, ">xml/$prefix$count$suffix.xml");
-            print $F <<XML;
+#######################################################################################################################
+
+sub template {
+    my ($i) = @_;
+
+    my $label_id = 1 + (($i - 1) % 7);
+    return <<TMPL;
+        <item id="$i">
+            <label id="$label_id"/>
+            <subitem id="$i"/>
+            <text>text $i</text>
+        </item>
+TMPL
+}
+
+sub type0 {
+    my ($count) = @_;
+
+    my $r = <<XML;
 <?xml version="1.0" encoding="utf-8"?>
 
+<test xmlns:ya="http://www.yandex.ru">
+
+    <labels>
 XML
-            print $F ($indents) ? "<items>\n" : "<items>";
-            print $F (&$sub($count, $indents));
-            print $F ($indents) ? "</items>\n" : "</items>";
-            close($F);
-        }
+
+    for (my $i = 1; $i <= $N_LABELS; $i++) {
+        $r .= <<XML;
+        <label id="$i">label $i</label>
+XML
     }
-}
+    $r .= <<XML;
+    </labels>
 
-#######################################################################################################################
+    <items>
+XML
 
-# Сгенерить список item'ов.
-sub items {
-    my ($count, $indents) = @_;
+    $r .= join('', map { template($_) } 1..$count);
 
-    return _tags("item", $count, $indents);
-}
+    $r .= <<XML;
+    </items>
 
-# Сгенерить чередующийся список из item/noitem'ов.
-sub item_noitem_s {
-    my ($count, $indents) = @_;
+</test>
+XML
 
-    return _tags([ "item", "noitem" ], $count, $indents);
-}
-
-# Сгенерить список item'ов, затем список noitem'ов.
-sub items_noitems {
-    my ($count, $indents) = @_;
-
-    return _tags("item", $count, $indents) . _tags("noitem", $count, $indents);
-}
-
-#######################################################################################################################
-
-sub _tags {
-    my ($tag, $count, $indents) = @_;
-
-    return join('', map( _tag($tag, $_, $indents), 1..$count));
-}
-
-sub _tag {
-    my ($tags, $i, $indents) = @_;
-
-    # В $tags просто строка с именем тега.
-    if (!(ref $tags)) { return _onetag($tags, $i, $indents); }
-
-    # В $tags ссылка на массив с именами тегов.
-
-    my $r = '';
-    for my $tag (@$tags) {
-        $r .= _onetag($tag, $i, $indents);
-    }
     return $r;
 }
 
-sub _onetag {
-    my ($tag, $i, $indents) = @_;
+sub type1 {
+    my ($count) = @_;
 
-    return ($indents) ? "    <$tag>$i</$tag>\n" : "<$tag>$i</$tag>";
+    my $r = type0($count);
+    $r =~ s{>\s+<}{><}gsm;
+    $r =~ s{(\?>)}{$1\n\n}sm;
+
+    return $r;
+}
+
+sub type2 {
+    my ($count) = @_;
+
+    my $r = type0($count);
+    $r =~ s{<(\w+)}{<ya:$1}gsm;
+    $r =~ s{</(\w+)}{</ya:$1}gsm;
+
+    return $r;
 }
 
 #######################################################################################################################

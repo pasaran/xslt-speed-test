@@ -5,16 +5,12 @@
 
 <xsl:output method="xml"/>
 
-<xsl:key name="key" match="item" use="."/>
+<xsl:key name="key" match="item" use="@id"/>
 
-<xsl:template match="/">
+<xsl:template match="test">
     <out>
-        <xsl:apply-templates select="items"/>
+        <xsl:value-of select="key('key', 1)/text"/>
     </out>
-</xsl:template>
-
-<xsl:template match="items">
-    <xsl:value-of select="key('key', 1)"/>
 </xsl:template>
 
 </xsl:stylesheet>

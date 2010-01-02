@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for dir in *
+do
+    if [ -d "$dir" ] && [ $dir != "xml" ]
+    then
+        echo $dir
+        cd $dir
+        ../dotest > results
+        cd ..
+    fi
+done
+

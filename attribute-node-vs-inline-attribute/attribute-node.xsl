@@ -3,22 +3,16 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
     >
 
+<xsl:include href="../common.xsl"/>
+
 <xsl:output method="xml"/>
 
-<xsl:template match="/">
-    <out>
-        <xsl:apply-templates select="items"/>
-    </out>
-</xsl:template>
-
-<xsl:template match="items">
-    <xsl:apply-templates select="item"/>
-</xsl:template>
-
 <xsl:template match="item">
-    <div>
-        <xsl:attribute name="class"><xsl:value-of select="."/></xsl:attribute>
-    </div>
+    <li>
+        <xsl:attribute name="class">
+            <xsl:value-of select="@id"/>
+        </xsl:attribute>
+    </li>
 </xsl:template>
 
 </xsl:stylesheet>

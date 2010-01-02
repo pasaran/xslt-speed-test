@@ -7,10 +7,10 @@
 
 <xsl:output method="xml"/>
 
-<xsl:template match="/">
-    <out>
+<xsl:template match="ya:test">
+    <results>
         <xsl:apply-templates select="ya:items"/>
-    </out>
+    </results>
 </xsl:template>
 
 <xsl:template match="ya:items">
@@ -20,7 +20,9 @@
 </xsl:template>
 
 <xsl:template match="ya:item">
-    <li><xsl:value-of select="."/></li>
+    <li>
+        <xsl:value-of select="ya:text"/>
+    </li>
 </xsl:template>
 
 </xsl:stylesheet>
