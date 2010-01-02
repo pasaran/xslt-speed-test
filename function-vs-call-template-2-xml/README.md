@@ -1,25 +1,6 @@
 Результаты тестов
 =================
 
-    $> ../dotest
-
-    -----------------------------------------------------------------------------------------------
-                      ../xml/items-50000-noindents.xml            run      parse xsl      parse xml
-    -----------------------------------------------------------------------------------------------
-                                           no-call.xsl         207.92           0.00          36.36
-                                          function.xsl         269.58           0.00          36.42
-                  function-with-unused-const-param.xsl         306.08           0.00          36.72
-                        function-with-unused-param.xsl         309.08           0.00          36.42
-                               function-with-param.xsl         317.96           0.00          36.40
-                                     call-template.xsl         361.26           0.00          36.36
-             call-template-with-unused-const-param.xsl         394.48           0.00          36.34
-                   call-template-with-unused-param.xsl         398.88           0.00          36.20
-                          call-template-with-param.xsl         403.00           0.00          36.68
-
-
-Выводы
-------
-
 Удивительно, но вызов функции ощутимо быстрее, чем именованный шаблон.
 Тем не менее, вычисление без каких-либо вызовов все равно быстрее.
 
