@@ -4,8 +4,10 @@
     -----------------------------------------------------------------------------------------------
                       ../xml/items-50000-noindents.xml            run      parse xsl      parse xml
     -----------------------------------------------------------------------------------------------
-                                  inline-attribute.xsl         323.44           0.00          40.64
-                                    attribute-node.xsl         377.60           0.00          41.52
+                                  inline-attribute.xsl         313.30           0.00          37.26
+                                    attribute-node.xsl         363.80           0.00          37.44
+                                   const-attribute.xsl         253.84           0.00          37.20
+                      const-attribute-and-value-of.xsl         344.40           0.00          37.74
 
 
 Выводы
