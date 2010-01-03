@@ -29,9 +29,9 @@ write_test("10000", 10000, \&type0);
 write_test("10000_", 10000, \&type1);
 write_test("10000ns", 10000, \&type2);
 
-write_test("50000", 5000, \&type0);
-write_test("50000_", 5000, \&type1);
-write_test("50000ns", 5000, \&type2);
+write_test("50000", 50000, \&type0);
+write_test("50000_", 50000, \&type1);
+write_test("50000ns", 50000, \&type2);
 
 #######################################################################################################################
 
@@ -60,7 +60,10 @@ sub template {
                         <subitem-4>
                             <subitem-5>
                                 <subitem-6>
-                                    <subitem-7>subtext $i</subitem-7>
+                                    <subitem-7 id="$i">
+                                        <id>$i</id>
+                                        <text>subtext $i</text>
+                                    </subitem-7>
                                 </subitem-6>
                             </subitem-5>
                         </subitem-4>
