@@ -17,13 +17,21 @@ write_test("5", 5, \&type0);
 write_test("5_", 5, \&type1);
 write_test("5ns", 5, \&type2);
 
+write_test("1000", 1000, \&type0);
+write_test("1000_", 1000, \&type1);
+write_test("1000ns", 1000, \&type2);
+
+write_test("5000", 5000, \&type0);
+write_test("5000_", 5000, \&type1);
+write_test("5000ns", 5000, \&type2);
+
 write_test("10000", 10000, \&type0);
 write_test("10000_", 10000, \&type1);
 write_test("10000ns", 10000, \&type2);
 
-write_test("50000", 50000, \&type0);
-write_test("50000_", 50000, \&type1);
-write_test("50000ns", 50000, \&type2);
+write_test("50000", 5000, \&type0);
+write_test("50000_", 5000, \&type1);
+write_test("50000ns", 5000, \&type2);
 
 #######################################################################################################################
 
@@ -44,8 +52,21 @@ sub template {
     my $label_id = 1 + (($i - 1) % 7);
     return <<TMPL;
         <item id="$i">
+            <id>$i</id>
             <label id="$label_id"/>
-            <subitem id="$i"/>
+            <subitem-1>
+                <subitem-2>
+                    <subitem-3>
+                        <subitem-4>
+                            <subitem-5>
+                                <subitem-6>
+                                    <subitem-7>subtext $i</subitem-7>
+                                </subitem-6>
+                            </subitem-5>
+                        </subitem-4>
+                    </subitem-3>
+                </subitem-2>
+            </subitem-1>
             <text>text $i</text>
         </item>
 TMPL
@@ -58,6 +79,71 @@ sub type0 {
 <?xml version="1.0" encoding="utf-8"?>
 
 <test xmlns:ya="http://www.yandex.ru">
+
+    <html>
+        <div class="b-folders">
+            <div class="b-folders__folder b-folders__folder_current b-folders__folder_unread">
+                <i class="b-folders__folder__arrow"/>
+                <a href="" class="b-folders__folder__link"><span class="b-folders__folder__text">Входящие</span></a>
+                <span class="b-folders__folder__info"><span class="b-folders__counters"><a href="#" class="b-folders__folder__link">23</a> / 90</span></span>
+            </div>
+            <div class="b-folders__folder b-folders__folder_custom">
+                <i class="b-folders__folder__arrow"/>
+                <a href="" class="b-folders__folder__link"><span class="b-folders__folder__text">Без иконки</span></a>
+                <span class="b-folders__folder__info"><span class="b-folders__counters">13</span></span>
+            </div>
+            <div class="b-folders__folder b-folders__folder_custom b-folders__folder_unread">
+                <i class="b-folders__folder__arrow"/>
+                <a href="" class="b-folders__folder__link"><span class="b-folders__folder__text">Переписка с Кауцким</span></a>
+                <span class="b-folders__folder__info"><span class="b-folders__counters"><a href="#" class="b-folders__folder__link">228</a> / 123450</span></span>
+            </div>
+            <div class="b-folders__folder b-folders__folder_custom b-folders__folder_unread">
+                <i class="b-folders__folder__arrow"/>
+                <a href="" class="b-folders__folder__link"><img src="/blocks/b-folders/icon/_icon/b-folders__icon_odnoklassniki.gif" class="b-folders__icon" alt=""/><span class="b-folders__folder__text">Одноклассники</span></a>
+                <span class="b-folders__folder__info"><span class="b-folders__counters"><a href="#" class="b-folders__folder__link">2</a> / 906</span></span>
+            </div>
+            <div class="b-folders__folder b-folders__folder_custom">
+                <i class="b-folders__folder__arrow"/>
+                <a href="" class="b-folders__folder__link"><img src="//favicon.yandex.net/favicon/blogs.mail.ru" class="b-folders__icon" alt=""/><span class="b-folders__folder__text">Внешняя иконка</span></a>
+                <span class="b-folders__folder__info"><span class="b-folders__counters">13</span></span>
+            </div>
+            <div class="b-folders__folder">
+                <i class="b-folders__folder__arrow"/>
+                <a href="" class="b-folders__folder__link"><span class="b-folders__folder__text">Отправленные</span></a>
+                <span class="b-folders__folder__info"><span class="b-folders__counters">60</span></span>
+            </div>
+            <div class="b-folders__folder">
+                <i class="b-folders__folder__arrow"/>
+                <a href="" class="b-folders__folder__link"><span class="b-folders__folder__text">Удалённые</span></a>
+                <span class="b-folders__folder__info">
+                    <a href="#"><img alt="[x]" title="Очистить" src="/blocks/b-folders/folder/b-folders__folder__clean.gif" class="b-folders__folder__clean"/></a>
+                    <span class="b-folders__counters">2</span>
+                </span>
+            </div>
+            <div class="b-folders__folder">
+                <i class="b-folders__folder__arrow"/>
+                <a href="" class="b-folders__folder__link"><span class="b-folders__folder__text">Спам</span></a>
+                <span class="b-folders__folder__info">
+                    <a href="#"><img alt="[x]" title="Очистить" src="/blocks/b-folders/folder/b-folders__folder__clean.gif" class="b-folders__folder__clean"/></a>
+                    <span class="b-folders__counters">6</span>
+                </span>
+            </div>
+            <div class="b-folders__folder">
+                <i class="b-folders__folder__arrow"/>
+                <a href="" class="b-folders__folder__link"><span class="b-folders__folder__text">Ну очень-очень длинное имя папки-шмапки</span></a>
+                <span class="b-folders__folder__info">
+                    <a href="#"><img alt="[x]" title="Очистить" src="/blocks/b-folders/folder/b-folders__folder__clean.gif" class="b-folders__folder__clean"/></a>
+                    <span class="b-folders__counters">6</span>
+                </span>
+            </div>
+            <div class="b-folders__folder">
+                <i class="b-folders__folder__arrow"/>
+                <a href="" class="b-folders__folder__link"><span class="b-folders__folder__text">Черновики</span></a>
+                <span class="b-folders__folder__info"><span class="b-folders__counters">30</span></span>
+            </div>
+            <div class="b-folders__setup"><a href="/setup_folders/" class="b-folders__setup__link">настроить…</a></div>
+        </div>
+    </html>
 
     <labels>
 XML
