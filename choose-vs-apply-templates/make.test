@@ -1,6 +1,3 @@
-../xml/50000_.xml
-    choose.xsl
-    apply-templates.xsl
-    choose-noout.xsl
-    apply-templates-noout.xsl
+../xml/s25000_.xml
+    *
 

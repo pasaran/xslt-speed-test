@@ -5,23 +5,13 @@
     exclude-result-prefixes=" ya "
     >
 
+<xsl:include href="../common-ns.xsl"/>
+
 <xsl:output method="xml"/>
-
-<xsl:template match="ya:test">
-    <results>
-        <xsl:apply-templates select="ya:items"/>
-    </results>
-</xsl:template>
-
-<xsl:template match="ya:items">
-    <ul>
-        <xsl:apply-templates select="ya:item"/>
-    </ul>
-</xsl:template>
 
 <xsl:template match="ya:item">
     <li>
-        <xsl:value-of select="ya:text"/>
+        <xsl:value-of select="."/>
     </li>
 </xsl:template>
 

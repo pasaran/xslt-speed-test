@@ -1,8 +1,3 @@
-../xml/10000_.xml
-    first-step.xsl
-    all-steps.xsl
-    last-step.xsl
-    first-step-with-modes.xsl
-    all-steps-with-modes.xsl
-    last-step-with-modes.xsl
+../xml/l5000_.xml
+    *
 

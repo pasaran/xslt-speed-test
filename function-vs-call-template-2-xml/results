@@ -1,0 +1,13 @@
+-----------------------------------------------------------------------------------------------
+                                  ../xml/5000_.xml            run      parse xsl      parse xml
+-----------------------------------------------------------------------------------------------
+                                       no-call.xsl          35.10           0.00          50.48
+                                      function.xsl          48.46           0.00          50.66
+              function-with-unused-const-param.xsl          53.14           0.00          50.46
+                    function-with-unused-param.xsl          56.84           0.00          50.70
+                           function-with-param.xsl          54.68           0.00          50.44
+                                 call-template.xsl          50.56           0.00          50.56
+         call-template-with-unused-const-param.xsl          54.30           0.00          50.88
+               call-template-with-unused-param.xsl          57.00           0.00          50.94
+                      call-template-with-param.xsl          55.82           0.00          50.74
+

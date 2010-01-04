@@ -1,0 +1,13 @@
+-----------------------------------------------------------------------------------------------
+                                ../xml/s25000_.xml            run      parse xsl      parse xml
+-----------------------------------------------------------------------------------------------
+                                       no-call.xsl         116.86           0.00          64.40
+               call-template-with-unused-param.xsl         220.08           0.00          64.22
+                                 call-template.xsl         193.10           0.00          64.84
+                    function-with-unused-param.xsl         180.04           0.00          64.24
+              function-with-unused-const-param.xsl         166.06           0.00          64.80
+                           function-with-param.xsl         176.94           0.00          64.44
+                      call-template-with-param.xsl         215.54           0.00          64.62
+         call-template-with-unused-const-param.xsl         209.66           0.00          64.12
+                                      function.xsl         147.74           0.00          64.76
+

@@ -11,15 +11,15 @@
     <xsl:apply-templates/>
 </xsl:template>
 
-<xsl:template match="id">
-    <id/>
+<xsl:template match="text">
+    <text/>
 </xsl:template>
 
 <xsl:template match="label">
     <label/>
 </xsl:template>
 
-<xsl:template match="subitem-1 | text"/>
+<xsl:template match="id | subitem-1"/>
 
 </xsl:stylesheet>
 

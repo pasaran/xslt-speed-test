@@ -13,46 +13,102 @@ my $N_LABELS = 7;
 
 #######################################################################################################################
 
-write_test("5", 5, \&type0);
-write_test("5_", 5, \&type1);
-write_test("5ns", 5, \&type2);
+write_test("s3", 3, \&test_simple);
+write_test("s1000", 1000, \&test_simple);
+write_test("s5000", 5000, \&test_simple);
+write_test("s10000", 10000, \&test_simple);
+write_test("s25000", 25000, \&test_simple);
 
-write_test("1000", 1000, \&type0);
-write_test("1000_", 1000, \&type1);
-write_test("1000ns", 1000, \&type2);
-
-write_test("5000", 5000, \&type0);
-write_test("5000_", 5000, \&type1);
-write_test("5000ns", 5000, \&type2);
-
-write_test("10000", 10000, \&type0);
-write_test("10000_", 10000, \&type1);
-write_test("10000ns", 10000, \&type2);
-
-write_test("50000", 50000, \&type0);
-write_test("50000_", 50000, \&type1);
-write_test("50000ns", 50000, \&type2);
+write_test("l3", 3, \&test_complex);
+write_test("l1000", 1000, \&test_complex);
+write_test("l5000", 5000, \&test_complex);
+write_test("l10000", 10000, \&test_complex);
+write_test("l25000", 25000, \&test_complex);
 
 #######################################################################################################################
 
 sub write_test {
-    my ($filename, $count, $type) = @_;
+    my ($prefix, $count, $content) = @_;
+
+    my $xml = &$content($count);
+
+    write_file("${prefix}.xml", $xml);
+    write_file("${prefix}_.xml", mod_noindents($xml));
+
+    my $xmlns = mod_ns($xml);
+    write_file("${prefix}ns.xml", $xmlns);
+    write_file("${prefix}ns_.xml", mod_noindents($xmlns));
+}
+
+sub write_file {
+    my ($filename, $content) = @_;
 
     my $F;
-    open($F, ">xml/$filename.xml");
-    print $F (&$type($count));
+    open($F, ">xml/$filename");
+    print $F <<XML;
+<?xml version="1.0" encoding="utf-8"?>
+
+<test xmlns:ya="http://www.yandex.ru">
+XML
+    print $F $content;
+    print $F <<XML;
+</test>
+
+XML
     close($F);
 }
 
 #######################################################################################################################
 
-sub template {
+sub test_simple {
+    my ($count) = @_;
+
+    return items($count, \&item_simple);
+}
+
+sub test_complex {
+    my ($count) = @_;
+
+    return html() . labels() . items($count, \&item_complex);
+}
+
+#######################################################################################################################
+
+sub items {
+    my ($count, $item) = @_;
+
+    my $r = <<XML;
+    <items>
+XML
+    $r .= join('', map { &$item($_) } 1..$count);
+    $r .= <<XML;
+    </items>
+XML
+}
+
+#######################################################################################################################
+
+sub item_simple {
     my ($i) = @_;
 
-    my $label_id = 1 + (($i - 1) % 7);
-    return <<TMPL;
+    return <<XML;
         <item id="$i">
             <id>$i</id>
+            <text>$i</text>
+        </item>
+XML
+
+}
+
+sub item_complex {
+    my ($i) = @_;
+
+    my $label_id = $i % $N_LABELS;
+
+    return <<XML;
+        <item id="$i">
+            <id>$i</id>
+            <text>text $i</text>
             <label id="$label_id"/>
             <subitem-1>
                 <subitem-2>
@@ -70,19 +126,48 @@ sub template {
                     </subitem-3>
                 </subitem-2>
             </subitem-1>
-            <text>text $i</text>
         </item>
-TMPL
+XML
 }
 
-sub type0 {
-    my ($count) = @_;
+#######################################################################################################################
 
-    my $r = <<XML;
-<?xml version="1.0" encoding="utf-8"?>
+sub mod_ns {
+    my ($xml) = @_;
 
-<test xmlns:ya="http://www.yandex.ru">
+    if ($xml =~ m{<html>.*</html>}) {
+        $xml =~ s{(.*)<html>}{ ns($1) . '<html>'; }egsm;
+        $xml =~ s{</html>(.*?)<html>}{ '</html>' . ns($1) . '<html>'; }egsm;
+        $xml =~ s{</html>(.*)}{ '</html>' . ns($1); }egsm;
+    } else {
+        $xml = ns($xml);
+    }
 
+    return $xml;
+}
+
+sub ns {
+    my ($xml) = @_;
+
+    $xml =~ s{<(\w+)}{<ya:$1}gsm;
+    $xml =~ s{</(\w+)}{</ya:$1}gsm;
+
+    return $xml;
+}
+
+sub mod_noindents {
+    my ($xml) = @_;
+
+    $xml =~ s{>\s+<}{><}gsm;
+    $xml =~ s{(\?>)}{$1\n\n}sm;
+
+    return $xml;
+}
+
+#######################################################################################################################
+
+sub html {
+    return <<HTML;
     <html>
         <div class="b-folders">
             <div class="b-folders__folder b-folders__folder_current b-folders__folder_unread">
@@ -147,10 +232,15 @@ sub type0 {
             <div class="b-folders__setup"><a href="/setup_folders/" class="b-folders__setup__link">настроить…</a></div>
         </div>
     </html>
+HTML
+}
 
+#######################################################################################################################
+
+sub labels {
+    my $r = <<XML;
     <labels>
 XML
-
     for (my $i = 1; $i <= $N_LABELS; $i++) {
         $r .= <<XML;
         <label id="$i">label $i</label>
@@ -158,37 +248,7 @@ XML
     }
     $r .= <<XML;
     </labels>
-
-    <items>
 XML
-
-    $r .= join('', map { template($_) } 1..$count);
-
-    $r .= <<XML;
-    </items>
-
-</test>
-XML
-
-    return $r;
-}
-
-sub type1 {
-    my ($count) = @_;
-
-    my $r = type0($count);
-    $r =~ s{>\s+<}{><}gsm;
-    $r =~ s{(\?>)}{$1\n\n}sm;
-
-    return $r;
-}
-
-sub type2 {
-    my ($count) = @_;
-
-    my $r = type0($count);
-    $r =~ s{<(\w+)}{<ya:$1}gsm;
-    $r =~ s{</(\w+)}{</ya:$1}gsm;
 
     return $r;
 }

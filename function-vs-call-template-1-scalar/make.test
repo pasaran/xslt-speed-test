@@ -1,11 +1,3 @@
-../xml/50000_.xml
-    no-call.xsl
-    function.xsl
-    function-with-unused-const-param.xsl
-    function-with-unused-param.xsl
-    function-with-param.xsl
-    call-template.xsl
-    call-template-with-unused-const-param.xsl
-    call-template-with-unused-param.xsl
-    call-template-with-param.xsl
+../xml/s25000_.xml
+    *
 

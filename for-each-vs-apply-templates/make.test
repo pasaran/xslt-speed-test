@@ -1,16 +1,6 @@
-../xml/50000.xml
-    for-each.xsl
-    apply-templates.xsl
-    apply-templates-select.xsl
-    for-each-noout.xsl
-    apply-templates-noout.xsl
-    apply-templates-select-noout.xsl
+../xml/s25000.xml
+    *
 
-../xml/50000_.xml
-    for-each.xsl
-    apply-templates.xsl
-    apply-templates-select.xsl
-    for-each-noout.xsl
-    apply-templates-noout.xsl
-    apply-templates-select-noout.xsl
+../xml/s25000_.xml
+    *
 

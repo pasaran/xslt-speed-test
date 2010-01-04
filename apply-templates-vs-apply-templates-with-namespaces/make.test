@@ -1,6 +1,8 @@
-../xml/50000.xml
+../xml/s25000_.xml
     apply-templates.xsl
+    apply-templates-noout.xsl
 
-../xml/50000ns.xml
+../xml/s25000ns_.xml
     apply-templates-ns.xsl
+    apply-templates-ns-noout.xsl
 

@@ -15,16 +15,16 @@
     <id/>
 </xsl:template>
 
+<xsl:template match="text">
+    <text/>
+</xsl:template>
+
 <xsl:template match="label">
     <label/>
 </xsl:template>
 
 <xsl:template match="subitem-1">
     <subitem-1/>
-</xsl:template>
-
-<xsl:template match="text">
-    <text/>
 </xsl:template>
 
 </xsl:stylesheet>

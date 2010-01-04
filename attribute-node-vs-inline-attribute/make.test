@@ -1,6 +1,3 @@
-../xml/50000_.xml
-    const-attribute.xsl
-    inline-attribute.xsl
-    const-attribute-and-value-of.xsl
-    attribute-node.xsl
+../xml/s25000_.xml
+    *
 

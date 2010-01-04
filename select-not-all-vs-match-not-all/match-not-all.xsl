@@ -11,16 +11,16 @@
     <xsl:apply-templates/>
 </xsl:template>
 
-<xsl:template match="id">
-    <id/>
+<xsl:template match="text">
+    <text/>
 </xsl:template>
 
 <xsl:template match="label">
     <label/>
 </xsl:template>
 
+<xsl:template match="id"/>
 <xsl:template match="subitem-1"/>
-<xsl:template match="text"/>
 
 </xsl:stylesheet>
 

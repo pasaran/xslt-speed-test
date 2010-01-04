@@ -8,11 +8,15 @@
 <xsl:output method="xml"/>
 
 <xsl:template match="item">
-    <xsl:apply-templates select="text | subitem-1 | label | id"/>
+    <xsl:apply-templates select="subitem-1 | label | text | id"/>
 </xsl:template>
 
 <xsl:template match="id">
     <id/>
+</xsl:template>
+
+<xsl:template match="text">
+    <text/>
 </xsl:template>
 
 <xsl:template match="label">
@@ -21,10 +25,6 @@
 
 <xsl:template match="subitem-1">
     <subitem-1/>
-</xsl:template>
-
-<xsl:template match="text">
-    <text/>
 </xsl:template>
 
 </xsl:stylesheet>
