@@ -1,0 +1,8 @@
+../xml/l10000_.xml
+    sequence.xsl
+    pipe.xsl
+
+../xml/l50000_.xml
+    sequence-noout.xsl
+    pipe-noout.xsl
+
