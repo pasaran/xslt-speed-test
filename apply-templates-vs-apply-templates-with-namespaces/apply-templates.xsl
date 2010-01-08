@@ -9,7 +9,7 @@
 
 <xsl:template match="item">
     <li>
-        <xsl:value-of select="."/>
+        <xsl:value-of select="text"/>
     </li>
 </xsl:template>
 

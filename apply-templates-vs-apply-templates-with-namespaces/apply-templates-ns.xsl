@@ -11,7 +11,7 @@
 
 <xsl:template match="ya:item">
     <li>
-        <xsl:value-of select="."/>
+        <xsl:value-of select="ya:text"/>
     </li>
 </xsl:template>
 
