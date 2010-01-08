@@ -1,3 +1,8 @@
 ../xml/s25000_.xml
-    *
+    apply-templates-1.xsl
+    apply-templates-2.xsl
+    apply-templates-3.xsl
+    value-of-dot.xsl
+    value-of-elem.xsl
+    value-of-text.xsl
 

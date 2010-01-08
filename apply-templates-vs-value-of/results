@@ -1,10 +1,10 @@
 -----------------------------------------------------------------------------------------------
                                 ../xml/s25000_.xml            run      parse xsl      parse xml
 -----------------------------------------------------------------------------------------------
-                             apply-templates-2.xsl          19.90           0.00          64.88
-                             apply-templates-1.xsl         102.38           0.00          64.42
-                                 value-of-text.xsl         116.42           0.00          64.38
-                             apply-templates-3.xsl         115.66           0.00          64.68
-                                 value-of-elem.xsl         117.42           0.00          64.58
-                                  value-of-dot.xsl         115.74           0.00          64.86
+                             apply-templates-1.xsl         103.76           0.00          65.46
+                             apply-templates-2.xsl          20.00           0.00          64.76
+                             apply-templates-3.xsl         116.94           0.00          65.34
+                                  value-of-dot.xsl         116.94           0.00          65.20
+                                 value-of-elem.xsl         118.82           0.00          65.50
+                                 value-of-text.xsl         118.38           0.00          65.58
 
