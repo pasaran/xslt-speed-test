@@ -1,0 +1,12 @@
+../xml/s1000_.xml
+    one-big-template-noout.xsl
+    several-small-templates-noout.xsl
+    more-small-templates-noout.xsl
+    even-more-small-templates-noout.xsl
+
+../xml/s1000_.xml
+    one-big-template.xsl
+    several-small-templates.xsl
+    more-small-templates.xsl
+    even-more-small-templates.xsl
+

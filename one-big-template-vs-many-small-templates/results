@@ -1,0 +1,16 @@
+-----------------------------------------------------------------------------------------------
+                                 ../xml/s1000_.xml            run      parse xsl      parse xml
+-----------------------------------------------------------------------------------------------
+                        one-big-template-noout.xsl           1.38           0.00           2.36
+                 several-small-templates-noout.xsl           7.58           0.00           2.04
+                    more-small-templates-noout.xsl          13.88           0.00           2.00
+               even-more-small-templates-noout.xsl          70.26           0.00           2.00
+
+-----------------------------------------------------------------------------------------------
+                                 ../xml/s1000_.xml            run      parse xsl      parse xml
+-----------------------------------------------------------------------------------------------
+                              one-big-template.xsl         223.54           0.00           2.34
+                       several-small-templates.xsl         236.66           0.00           2.04
+                          more-small-templates.xsl         267.54           0.00           2.06
+                     even-more-small-templates.xsl         384.06           0.00           2.10
+
