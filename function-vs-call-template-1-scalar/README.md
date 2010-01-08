@@ -1,20 +1,25 @@
+Функции или именованные шаблоны
+===============================
+
+Делают по сути одно и то же, но функции компактнее, их можно использовать в выражениях.
+Но было мнение, что они сильно дороже.
+
+
 Результаты тестов
-=================
-
-    $> ../dotest
+-----------------
 
     -----------------------------------------------------------------------------------------------
-                      ../xml/items-50000-noindents.xml            run      parse xsl      parse xml
+                                    ../xml/s25000_.xml            run      parse xsl      parse xml
     -----------------------------------------------------------------------------------------------
-                                           no-call.xsl         207.92           0.00          36.36
-                                          function.xsl         269.58           0.00          36.42
-                  function-with-unused-const-param.xsl         306.08           0.00          36.72
-                        function-with-unused-param.xsl         309.08           0.00          36.42
-                               function-with-param.xsl         317.96           0.00          36.40
-                                     call-template.xsl         361.26           0.00          36.36
-             call-template-with-unused-const-param.xsl         394.48           0.00          36.34
-                   call-template-with-unused-param.xsl         398.88           0.00          36.20
-                          call-template-with-param.xsl         403.00           0.00          36.68
+                                           no-call.xsl         116.86           0.00          64.40
+                   call-template-with-unused-param.xsl         220.08           0.00          64.22
+                                     call-template.xsl         193.10           0.00          64.84
+                        function-with-unused-param.xsl         180.04           0.00          64.24
+                  function-with-unused-const-param.xsl         166.06           0.00          64.80
+                               function-with-param.xsl         176.94           0.00          64.44
+                          call-template-with-param.xsl         215.54           0.00          64.62
+             call-template-with-unused-const-param.xsl         209.66           0.00          64.12
+                                          function.xsl         147.74           0.00          64.76
 
 
 Выводы
@@ -23,5 +28,6 @@
 Удивительно, но вызов функции ощутимо быстрее, чем именованный шаблон.
 Тем не менее, вычисление без каких-либо вызовов все равно быстрее.
 
-Просто передача параметра замедляет вызов функции процентов на 10-15.
+Просто передача и прием параметра замедляет вызов функции процентов на 10-15.
+
 
