@@ -1,10 +1,10 @@
 -----------------------------------------------------------------------------------------------
-                                  ../xml/5000_.xml            run      parse xsl      parse xml
+                                ../xml/s25000_.xml            run      parse xsl      parse xml
 -----------------------------------------------------------------------------------------------
-                    many-different-modes-noout.xsl           6.00           2.00          50.50
-                          many-different-modes.xsl          42.30           5.46          50.00
-                                      one-mode.xsl          41.36           0.00          51.02
-                         many-same-modes-noout.xsl           6.00           2.00          50.50
-                                one-mode-noout.xsl           5.36           0.00          50.94
-                               many-same-modes.xsl          42.00           5.36          50.14
+                    many-different-modes-noout.xsl          15.00           2.00          63.72
+                          many-different-modes.xsl         195.28           5.54          63.02
+                                      one-mode.xsl         189.40           0.00          64.50
+                         many-same-modes-noout.xsl          15.00           2.00          63.60
+                                one-mode-noout.xsl          15.00           0.00          63.98
+                               many-same-modes.xsl         194.36           5.66          63.28
 
