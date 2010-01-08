@@ -18,12 +18,14 @@ write_test("s1000", 1000, \&test_simple);
 write_test("s5000", 5000, \&test_simple);
 write_test("s10000", 10000, \&test_simple);
 write_test("s25000", 25000, \&test_simple);
+write_test("s50000", 50000, \&test_simple);
 
 write_test("l3", 3, \&test_complex);
 write_test("l1000", 1000, \&test_complex);
 write_test("l5000", 5000, \&test_complex);
 write_test("l10000", 10000, \&test_complex);
 write_test("l25000", 25000, \&test_complex);
+write_test("l50000", 50000, \&test_complex);
 
 #######################################################################################################################
 

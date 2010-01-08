@@ -19,5 +19,9 @@
     </ul>
 </xsl:template>
 
+<xsl:template match="item[true()]">
+    <li><xsl:value-of select="text"/></li>
+</xsl:template>
+
 </xsl:stylesheet>
 

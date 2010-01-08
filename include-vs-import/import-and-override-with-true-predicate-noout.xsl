@@ -3,7 +3,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
     >
 
-<xsl:include href="common-1.xsl"/>
+<xsl:import href="common-1.xsl"/>
 
 <xsl:output method="xml"/>
 
@@ -14,10 +14,10 @@
 </xsl:template>
 
 <xsl:template match="items">
-    <ul>
-        <xsl:apply-templates select="item"/>
-    </ul>
+    <xsl:apply-templates select="item"/>
 </xsl:template>
+
+<xsl:template match="item[true()]"/>
 
 </xsl:stylesheet>
 

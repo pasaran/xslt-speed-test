@@ -4,6 +4,8 @@
     >
 
 <xsl:include href="common-1.xsl"/>
+<xsl:include href="common-2.xsl"/>
+<xsl:include href="common-3.xsl"/>
 
 <xsl:output method="xml"/>
 
@@ -17,6 +19,10 @@
     <ul>
         <xsl:apply-templates select="item"/>
     </ul>
+</xsl:template>
+
+<xsl:template match="item">
+    <li><xsl:value-of select="text"/></li>
 </xsl:template>
 
 </xsl:stylesheet>

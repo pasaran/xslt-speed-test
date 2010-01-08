@@ -1,14 +1,34 @@
 ../xml/s25000_.xml
-    default-noout.xsl
-    include-noout.xsl
-    include-and-override-noout.xsl
-    import-noout.xsl
-    import-and-override-noout.xsl
-
-../xml/s10000_.xml
     default.xsl
     include.xsl
     include-and-override.xsl
+    include-and-override-with-true-predicate.xsl
+    include-3.xsl
+    include-3-and-override.xsl
+    include-5.xsl
+    include-5-and-override.xsl
     import.xsl
     import-and-override.xsl
+    import-and-override-with-true-predicate.xsl
+    import-3.xsl
+    import-3-and-override.xsl
+    import-5.xsl
+    import-5-and-override.xsl
+
+../xml/s50000_.xml
+    default-noout.xsl
+    include-noout.xsl
+    include-and-override-noout.xsl
+    include-and-override-with-true-predicate-noout.xsl
+    include-3-noout.xsl
+    include-3-and-override-noout.xsl
+    include-5-noout.xsl
+    include-5-and-override-noout.xsl
+    import-noout.xsl
+    import-and-override-noout.xsl
+    import-and-override-with-true-predicate-noout.xsl
+    import-3-noout.xsl
+    import-3-and-override-noout.xsl
+    import-5-noout.xsl
+    import-5-and-override-noout.xsl
 

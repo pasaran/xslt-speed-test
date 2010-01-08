@@ -3,7 +3,9 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
     >
 
-<xsl:include href="common-1.xsl"/>
+<xsl:include href="common-1-noout.xsl"/>
+<xsl:include href="common-2-noout.xsl"/>
+<xsl:include href="common-3-noout.xsl"/>
 
 <xsl:output method="xml"/>
 
@@ -14,9 +16,7 @@
 </xsl:template>
 
 <xsl:template match="items">
-    <ul>
-        <xsl:apply-templates select="item"/>
-    </ul>
+    <xsl:apply-templates select="item"/>
 </xsl:template>
 
 </xsl:stylesheet>

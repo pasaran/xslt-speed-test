@@ -14,10 +14,10 @@
 </xsl:template>
 
 <xsl:template match="items">
-    <ul>
-        <xsl:apply-templates select="item"/>
-    </ul>
+    <xsl:apply-templates select="item"/>
 </xsl:template>
+
+<xsl:template match="item[true()]"/>
 
 </xsl:stylesheet>
 
