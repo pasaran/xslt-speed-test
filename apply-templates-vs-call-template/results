@@ -1,10 +1,10 @@
 -----------------------------------------------------------------------------------------------
                                 ../xml/s25000_.xml            run      parse xsl      parse xml
 -----------------------------------------------------------------------------------------------
-                                 call-template.xsl         233.54           0.00          64.92
-                               apply-templates.xsl         250.74           0.00          64.22
-                          apply-templates-mode.xsl         249.48           0.00          65.10
-                           call-template-noout.xsl          89.22           0.00          64.30
-                         apply-templates-noout.xsl         113.68           0.00          64.32
-                    apply-templates-mode-noout.xsl         106.90           0.00          64.16
+                                 call-template.xsl         235.18           0.00          65.32
+                               apply-templates.xsl         252.52           0.00          65.20
+                          apply-templates-mode.xsl         251.10           0.00          65.36
+                           call-template-noout.xsl          89.78           0.00          65.06
+                         apply-templates-noout.xsl         114.72           0.00          65.80
+                    apply-templates-mode-noout.xsl         108.50           0.00          65.64
 

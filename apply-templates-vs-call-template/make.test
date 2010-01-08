@@ -1,3 +1,8 @@
 ../xml/s25000_.xml
-    *
+    call-template.xsl
+    apply-templates.xsl
+    apply-templates-mode.xsl
+    call-template-noout.xsl
+    apply-templates-noout.xsl
+    apply-templates-mode-noout.xsl
 

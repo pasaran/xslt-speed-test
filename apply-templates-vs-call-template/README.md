@@ -1,5 +1,8 @@
 Результаты тестов
 =================
 
-`call-template` быстрее, чем `apply-templates` по моде.
+`call-template` быстрее, чем оба варианта с `apply-templates`. Даже без учета вывода (-noout).
+
+При этом `apply-templates` с модой дешевле, чем `apply-templates` со сменой контекста.
+С -noout разница в 6ms, но непонятно, куда она девается без -noout.
 
