@@ -18,4 +18,7 @@
     При этом еще важный нюанс: в `choose` много времени тратится именно на сам выбор,
     а в `apply-templates` на вывод результата (choose-vs-apply-templates/).
 
+6.  Копировать xml/html из исходного дерева лучше всего через `copy-of`.
+    `identity transform` в два с лишним раза дороже -- без необходимости не использовать
+    (copy-of-vs-identity-transform-vs-literal-result/).
 
