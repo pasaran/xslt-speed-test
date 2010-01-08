@@ -1,20 +1,20 @@
 -----------------------------------------------------------------------------------------------
                                  ../xml/s25000.xml            run      parse xsl      parse xml
 -----------------------------------------------------------------------------------------------
-                        apply-templates-select.xsl         159.54           0.00         105.70
-                  apply-templates-select-noout.xsl          15.72           0.00         104.82
-                               apply-templates.xsl         159.48           0.00         105.80
-                                      for-each.xsl          79.68           0.00         105.92
-                         apply-templates-noout.xsl          15.62           0.00         105.52
-                                for-each-noout.xsl          12.00           0.00         105.30
+                                      for-each.xsl          80.00           0.00         105.72
+                               apply-templates.xsl         176.24           0.00         105.40
+                        apply-templates-select.xsl         160.26           0.00         105.70
+                                for-each-noout.xsl          12.00           0.00         105.96
+                         apply-templates-noout.xsl          21.32           0.00         105.86
+                  apply-templates-select-noout.xsl          15.76           0.00         105.40
 
 -----------------------------------------------------------------------------------------------
                                 ../xml/s25000_.xml            run      parse xsl      parse xml
 -----------------------------------------------------------------------------------------------
-                        apply-templates-select.xsl         156.50           0.00          64.94
-                  apply-templates-select-noout.xsl          13.10           0.00          64.90
-                               apply-templates.xsl         156.56           0.00          64.48
-                                      for-each.xsl          77.00           0.00          64.28
-                         apply-templates-noout.xsl          13.26           0.00          64.14
-                                for-each-noout.xsl          10.00           0.00          64.18
+                                      for-each.xsl          77.02           0.00          64.50
+                               apply-templates.xsl         156.12           0.00          64.30
+                        apply-templates-select.xsl         156.82           0.00          64.50
+                                for-each-noout.xsl          10.00           0.00          64.08
+                         apply-templates-noout.xsl          13.00           0.00          64.66
+                  apply-templates-select-noout.xsl          13.46           0.00          64.82
 
