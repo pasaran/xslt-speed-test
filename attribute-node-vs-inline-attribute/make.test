@@ -1,3 +1,7 @@
 ../xml/s25000_.xml
-    *
+    without-attribute.xsl
+    inline-attribute.xsl
+    const-attribute.xsl
+    const-attribute-and-value-of.xsl
+    attribute-node.xsl
 

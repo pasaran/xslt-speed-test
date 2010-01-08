@@ -1,8 +1,9 @@
 -----------------------------------------------------------------------------------------------
                                 ../xml/s25000_.xml            run      parse xsl      parse xml
 -----------------------------------------------------------------------------------------------
-                              inline-attribute.xsl         159.60           0.00          64.72
-                                attribute-node.xsl         189.24           0.00          64.76
-                               const-attribute.xsl         131.00           0.00          64.50
-                  const-attribute-and-value-of.xsl         178.20           0.00          64.72
+                             without-attribute.xsl         105.56           0.00          65.82
+                              inline-attribute.xsl         162.20           0.00          64.84
+                               const-attribute.xsl         132.64           0.00          65.06
+                  const-attribute-and-value-of.xsl         180.64           0.00          65.26
+                                attribute-node.xsl         191.36           0.00          65.42
 
