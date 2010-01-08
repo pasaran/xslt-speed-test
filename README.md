@@ -6,7 +6,7 @@
 
 1.  Неймспейсы -- зло (apply-templates-vs-apply-templates-with-namespaces/).
 
-2.  call-template выгоднее, чем apply-templates (apply-templates-vs-call-template/).
+2.  `call-template` выгоднее, чем `apply-templates` (apply-templates-vs-call-template/).
 
 3.  Дефолтные шаблоны рулят. Самый быстрый способ вывести текстовую ноду -- `apply-templates` на нее
     (apply-templates-vs-value-of/).
@@ -56,4 +56,7 @@
 17. Один большой шаблон лучше, чем несколько маленькие (one-big-template-vs-many-small-templates/).
 
 18. Похоже, что чем выше (в смысле стека вызова шаблонов) выводить что-нибудь в результирующее дерево, тем лучше (output-in-seven-steps/).
+
+19. Лучше всего использовать `method="text"`. Если бы это было возможно всегда (output-xml-vs-output-html-vs-output-text/).
+
 
