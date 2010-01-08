@@ -1,0 +1,14 @@
+../xml/s25000_.xml
+    default-noout.xsl
+    include-noout.xsl
+    include-and-override-noout.xsl
+    import-noout.xsl
+    import-and-override-noout.xsl
+
+../xml/s10000_.xml
+    default.xsl
+    include.xsl
+    include-and-override.xsl
+    import.xsl
+    import-and-override.xsl
+
