@@ -59,4 +59,5 @@
 
 19. Лучше всего использовать `method="text"`. Если бы это было возможно всегда (output-xml-vs-output-html-vs-output-text/).
 
+20. Можно, если осторожно, использовать `//` в select'е (select-in-seven-steps/).
 
