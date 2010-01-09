@@ -47,7 +47,10 @@
 ------
 
 1.  Неймспейсы -- зло.  
-    [apply-templates-vs-apply-templates-with-namespaces](apply-templates-vs-apply-templates-with-namespaces/)
+    [apply-templates-vs-apply-templates-with-namespaces](apply-templates-vs-apply-templates-with-namespaces/)  
+    [apply-templates-vs-apply-templates-with-namespaces](pasaran/xslt-speed-test@apply-templates-vs-apply-templates-with-namespaces/)  
+    [apply-templates-vs-apply-templates-with-namespaces](pasaran/xslt-speed-test/apply-templates-vs-apply-templates-with-namespaces/)  
+    [apply-templates-vs-apply-templates-with-namespaces](/pasaran/xslt-speed-test/apply-templates-vs-apply-templates-with-namespaces/)  
 
 2.  `call-template` выгоднее, чем `apply-templates`.  
     [apply-templates-vs-call-template](apply-templates-vs-call-template/)
