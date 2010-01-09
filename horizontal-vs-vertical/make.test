@@ -1,0 +1,21 @@
+../xml/l10000_.xml
+    long-horizontal-1.xsl
+    long-vertical-1.xsl
+    long-vertical-2.xsl
+    long-horizontal-noout.xsl
+    long-vertical-noout.xsl
+
+../xml/s10000_.xml
+    horizontal-1.xsl
+    horizontal-wrap-1.xsl
+    horizontal-wrap-2.xsl
+    horizontal-wrap-3.xsl
+    horizontal-wrap-4.xsl
+    vertical-1.xsl
+    vertical-2.xsl
+    vertical-3.xsl
+    vertical-wrap-1.xsl
+    vertical-wrap-2.xsl
+    horizontal-noout.xsl
+    vertical-noout.xsl
+

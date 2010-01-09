@@ -43,8 +43,17 @@
 Это тема для будущих экспериментов. А это так, для затравки.
 
 
-Выводы
-------
+Глобальные выводы
+-----------------
+
+*   Большая часть времени тратится вовсе не на хождение по дереву, match/select и т.д.,
+    а тратится оно на ввод/вывод. А точнее на вывод в результирующее дерево.
+
+*   ...
+
+
+Коротенько о результатах тестов
+-------------------------------
 
 1.  Неймспейсы -- зло.  
     [apply-templates-vs-apply-templates-with-namespaces](/pasaran/xslt-speed-test/tree/master/apply-templates-vs-apply-templates-with-namespaces/)  
@@ -139,4 +148,7 @@
 27. Получить значение атрибута стоит дешевле, чем значение вложенного элемента.  
     [value-of-id-vs-value-of-@id](/pasaran/xslt-speed-test/tree/master/value-of-id-vs-value-of-@id/)
 
+28. Непонятные результаты. Особенно вместе с `one-big-template-vs-many-small-templates`.
+    Как же все-таки вложенность влияет на а) вывод и б) match/select? Пока что непонятно.  
+    [horizontal-vs-vertical](/pasaran/xslt-speed-test/tree/master/horizontal-vs-vertical/)
 
