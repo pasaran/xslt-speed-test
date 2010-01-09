@@ -61,3 +61,5 @@
 
 20. Можно, если осторожно, использовать `//` в select'е (select-in-seven-steps/).
 
+21. Дешевле выбрать все, а ненужное занулить (select-not-all-vs-match-not-all/).
+

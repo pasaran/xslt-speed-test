@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------------------------
-                                  ../xml/5000_.xml            run      parse xsl      parse xml
+                                ../xml/l25000_.xml            run      parse xsl      parse xml
 -----------------------------------------------------------------------------------------------
-                                 match-not-all.xsl          62.74           0.00          50.82
-                                select-not-all.xsl          65.58           0.00          50.54
-                       match-not-all-with-pipe.xsl          62.82           0.00          50.68
+                                 match-not-all.xsl         313.74           0.00         250.30
+                                select-not-all.xsl         323.78           0.00         249.58
+                       match-not-all-with-pipe.xsl         312.78           0.00         251.04
 
