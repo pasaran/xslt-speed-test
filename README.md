@@ -63,3 +63,6 @@
 
 21. Дешевле выбрать все, а ненужное занулить (select-not-all-vs-match-not-all/).
 
+22. Самый быстрый способ выбрать все -- просто `apply-templates`. Потом через `*`, потом через pipe (select-star-vs-select-vs-select-pipe/).
+
+
