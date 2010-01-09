@@ -6,7 +6,7 @@
 
 После checkout'а, нужно в корне проекта запустить скрипт:
 
-    $> git://github.com/pasaran/xslt-speed-test.git
+    $> git clone git://github.com/pasaran/xslt-speed-test.git
     $> cd xslt-speed-test
     $> ./genxml
 
