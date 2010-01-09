@@ -65,4 +65,7 @@
 
 22. Самый быстрый способ выбрать все -- просто `apply-templates`. Потом через `*`, потом через pipe (select-star-vs-select-vs-select-pipe/).
 
+23. Два шаблона с предикатом стоят столько же, сколько и один с if'ом (two-templates-vs-template-with-if/).
+
+24. Ключ строится только если он используется (use-key-vs-define-key/).
 
