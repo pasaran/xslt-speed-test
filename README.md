@@ -152,3 +152,5 @@
     Как же все-таки вложенность влияет на а) вывод и б) match/select? Пока что непонятно.  
     [horizontal-vs-vertical](/pasaran/xslt-speed-test/tree/master/horizontal-vs-vertical/)
 
+29. Выводить простые куски xml'я дешевле при помощи `<xsl:value-of disable-output-escaping="yes"/>`.  
+    [literal-result-vs-value-of](/pasaran/xslt-speed-test/tree/master/literal-result-vs-value-of/)
